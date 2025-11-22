@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --background-image-home: url("/assets/bg.png");
+  --font-roboto: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #f6f7f8;
+}
