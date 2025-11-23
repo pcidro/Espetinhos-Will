@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -44,7 +45,7 @@
           <p class="text-sm">Pão Levinho de fermentação natural de Trigo, burger 160g, queijo prato e maionese da casa</p>
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 18.90</p>
-            <button data-name="Hamburger Smash" class="bg-gray-900 px-5 rounded add-to-cart-btn" data-price="18.90">
+            <button data-name="Hamburger Smash" class="bg-gray-900 px-5 rounded add-to-cart-btn  cursor-pointer" data-price="18.90">
               <i class="fa-solid fa-cart-plus text-white"></i>
             </button>
           </div>
@@ -59,7 +60,7 @@
           <p class="text-sm">Pão Levinho de fermentação natural de Trigo, burger 160g, queijo prato e maionese da casa</p>
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 32.90</p>
-            <button data-name="Hamburger Duplo" class="bg-gray-900 px-5 rounded add-to-cart-btn" data-price="32.90">
+            <button data-name="Hamburger Duplo" class="bg-gray-900 px-5 rounded add-to-cart-btn  cursor-pointer" data-price="32.90">
               <i class="fa-solid fa-cart-plus text-white"></i>
             </button>
           </div>
@@ -74,7 +75,7 @@
           <p class="text-sm">Pão Levinho de fermentação natural de Trigo, burger 160g, queijo prato e maionese da casa</p>
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 35.90</p>
-            <button data-name="Hamburger Salad" class="bg-gray-900 px-5 rounded add-to-cart-btn" data-price="35.90">
+            <button data-name="Hamburger Salad" class="bg-gray-900 px-5 rounded cursor-pointer add-to-cart-btn  cursor-pointer" data-price="35.90">
               <i class="fa-solid fa-cart-plus text-white"></i>
             </button>
           </div>
@@ -89,7 +90,7 @@
           <p class="text-sm">Pão Levinho de fermentação natural de Trigo, burger 160g, queijo prato e maionese da casa</p>
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 30</p>
-            <button data-name="Hamburger da casa" class="bg-gray-900 px-5 rounded add-to-cart-btn" data-price="30">
+            <button data-name="Hamburger da casa" class="bg-gray-900 px-5 rounded add-to-cart-btn  cursor-pointer" data-price="30">
               <i class="fa-solid fa-cart-plus text-white"></i>
             </button>
           </div>
@@ -112,7 +113,7 @@
 
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 6</p>
-            <button data-name="Coca Lata" class="bg-gray-900 px-5 rounded add-to-cart-btn" data-price="6">
+            <button data-name="Coca Lata" class="bg-gray-900 px-5 rounded add-to-cart-btn cursor-pointer" data-price="6">
               <i class="fa-solid fa-cart-plus text-white"></i>
             </button>
           </div>
@@ -128,7 +129,7 @@
 
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 6</p>
-            <button data-name="Guarana Lata" class="bg-gray-900 px-5 rounded add-to-cart-btn" data-price="6">
+            <button data-name="Guarana Lata" class="bg-gray-900 px-5 rounded add-to-cart-btn  cursor-pointer " data-price="6">
               <i class="fa-solid fa-cart-plus text-white"></i>
             </button>
           </div>
@@ -144,18 +145,22 @@
 
   <!-- Modal Cart -->
 
-  <div class="bg-black/60 w-full h-full fixed top-0 left-0 z=[99] flex items-center justify-center hidden">
+  <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] flex items-center justify-center hidden" id="cart-modal">
     <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
       <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
       <div class="flex justify-between mb-2 flex-col" id="card-items"></div>
       <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
       <p class="font-bold mt-4">Endereço de entrega:</p>
       <input type="text" placeholder="Digite seu endereço completo" id="adress" class="w-full border-2 p-1 rounded my-1">
-      <p id="adress-warn" class="text-red-500 hidden">Digite seu endereço completo!</p>
+      <p id="address-warn" class="text-red-500 hidden">Digite seu endereço completo!</p>
 
-      <div class="flex items-center justify-between mt-4 w-full">
-        <button id="close-modal-btn">Fechar</button>
-        <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar Pedido</button>
+      <div class="flex items-center justify-between mt-4 w-full gap-2">
+        <button id="close-modal-btn" class="flex-1 bg-red-500 hover:bg-red-600 active:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 shadow-md">
+          Fechar
+        </button>
+        <button id="checkout-btn" class="flex-1 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 shadow-md">
+          Finalizar Pedido
+        </button>
       </div>
     </div>
   </div>
@@ -166,7 +171,7 @@
   <!-- Button Cart Footer -->
   <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
     <button class="flex items-center gap-2 text-white font-bold cursor-pointer" id="cart-btn">
-      (<span id=" cart-count">0</span>)
+      (<span id="cart-count">0</span>)
       Ver Meu Carinho
       <i class="fa-solid fa-cart-plus text-white">
 
@@ -175,6 +180,8 @@
   </footer>
   <!-- Fim Cart Footer -->
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
